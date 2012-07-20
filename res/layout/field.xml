@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:keepScreenOn="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+		android:layout_height="wrap_content" 
+		android:orientation="horizontal"
+		android:background="@drawable/control_bar">
+        
+	    <Button
+	        android:id="@+id/file"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="7dp"
+	        android:text="@string/file" />
+	    
+	    <Button
+	        android:id="@+id/edit"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="7dp"
+	        android:text="@string/edit" />
+	    
+	    <Button
+	        android:id="@+id/add_polygon"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="7dp"
+	        android:text="@string/add_polygon"
+	        android:onClick="togglePolygon" />
+	    
+	    <Button
+	        android:id="@+id/finish_polygon"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="7dp"
+	        android:visibility="invisible"
+	        android:text="@string/finish_polygon"
+	        android:onClick="finishPolygon" />
+	    
+	    <Button
+	        android:id="@+id/clear_polygon"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="7dp"
+	        android:visibility="invisible"
+	        android:text="@string/clear_polygon"
+	        android:onClick="clearPolygon" />
+        
+    </LinearLayout>   
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:orientation="horizontal">
+        
+        <RelativeLayout 
+		    android:layout_width="0px"
+		    android:layout_height="fill_parent"
+		    android:layout_weight=".61"
+		    android:layout_gravity="left">
+		    
+			<com.google.android.maps.MapView
+			    android:id="@+id/map"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:apiKey="@string/google_api_key"
+			    android:clickable="true"
+			    android:state_enabled="true" />
+			
+			<edu.purdue.FieldNotebook.view.PolygonSurfaceView
+			    android:id="@+id/polySurface"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent" />
+			
+		</RelativeLayout>
+		
+		<RelativeLayout
+		    android:id="@+id/notes_pane"
+		    android:layout_width="0px"
+		    android:layout_height="fill_parent"
+		    android:layout_weight=".39"
+		    android:layout_gravity="right"
+		    android:background="@drawable/pane">
+		    
+		    <Button
+		        android:id="@+id/add_note"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_alignTop="@id/notes_pane"
+		        android:layout_margin="7dp"
+		        android:text="@string/add_note" 
+		        android:onClick="addNote"/>
+		    
+		    <ScrollView
+		        android:layout_below="@id/add_note"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent">
+		        
+			    <LinearLayout 
+			        android:id="@+id/notes"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:orientation="vertical"
+			        android:clipChildren="true">
+			        
+			        <!-- Programmatically add notes -->
+			        
+			    </LinearLayout>:w
+			 </ScrollView>
+		    
+		</RelativeLayout>
+		
+	</LinearLayout>
+
+</LinearLayout>

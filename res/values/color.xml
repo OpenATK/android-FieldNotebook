@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <color name="pane_background">#E3D9AF</color>
+    <color name="pane_border">#F4EAC0</color>
+    
+    <color name="control_bar_background">#D9D7D2</color>
+    
+    <color name="note_background">#FFFA70</color>
+    <color name="note_border">#EEE95F</color>
+    <color name="note_selected_background">#DBD760</color>
+    <color name="note_selected_border">#CAC64F</color>
+    
+    <color name="notepaper_background">#FFF703</color>
+    <color name="notepaper_border">#EEE95F</color>
+    
+    <color name="hrule">#000000</color>
+</resources>

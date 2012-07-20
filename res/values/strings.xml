@@ -1,0 +1,10 @@
+<resources>
+	<string name="google_api_key">02YP-AXMV63rQUc5m2Q-hrx9cApiK3b6gxKftjg</string>
+    <string name="app_name">Field Notebook</string>
+    <string name="add_note">Add A Note</string>
+    <string name="file">File</string>
+    <string name="edit">Edit</string>
+    <string name="add_polygon">Add Polygon</string>
+    <string name="finish_polygon">Finish Polygon</string>
+    <string name="clear_polygon">Clear Polygon</string>
+</resources>
