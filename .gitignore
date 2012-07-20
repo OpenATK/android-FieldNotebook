@@ -1,0 +1,16 @@
+# built files
+*.apk
+*.ap_
+
+# dex VM files
+*.dex
+
+# class files
+*.class
+
+# auto-gen files
+bin/
+gen/
+
+# User specific settings
+local.properties
