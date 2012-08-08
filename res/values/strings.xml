@@ -7,4 +7,5 @@
     <string name="add_polygon">Add Polygon</string>
     <string name="finish_polygon">Finish Polygon</string>
     <string name="clear_polygon">Clear Polygon</string>
+    <string name="import_rocks">Import Rocks</string>
 </resources>

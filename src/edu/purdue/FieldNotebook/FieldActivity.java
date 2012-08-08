@@ -1,5 +1,7 @@
 package edu.purdue.FieldNotebook;
 
+import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +18,8 @@ import edu.purdue.FieldNotebook.shape.ScreenPolygon;
 import edu.purdue.FieldNotebook.view.PolygonOverlay;
 import edu.purdue.FieldNotebook.view.PolygonSurfaceView;
 
+import edu.purdue.libwaterapps.rock.Rock;
+
 public class FieldActivity extends MapActivity {
 	
 	MapView mMapView;
@@ -24,6 +28,11 @@ public class FieldActivity extends MapActivity {
 	PolygonOverlay mPolygonOverlay;
 	LinearLayout mNotesView;
 	PolygonSurfaceView mPolygonView;
+	RockOverlay mPickedRocks;
+	RockOverlay mNotPickedRocks;
+	
+	static final int SPAN_LAT = 3000;
+	static final int SPAN_LONG = 3000;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +56,14 @@ public class FieldActivity extends MapActivity {
 		// Make a PolygonOverlay
 		mPolygonOverlay = new PolygonOverlay(getResources().getDrawable(R.drawable.ic_launcher));
 		mMapView.getOverlays().add(mPolygonOverlay);
+		
+		// Make a overlay for the rocks
+		mPickedRocks = new RockOverlay(this.getResources().getDrawable(R.drawable.rock_up));
+		mNotPickedRocks = new RockOverlay(this.getResources().getDrawable(R.drawable.rock_down));
+		
+		mMapView.getOverlays().add(mPickedRocks);
+		mMapView.getOverlays().add(mNotPickedRocks);
+		
 		
 		// Get a hold of the notes list
 		mNotesView = (LinearLayout)findViewById(R.id.notes);
@@ -82,7 +99,7 @@ public class FieldActivity extends MapActivity {
 		mMyLocationOverlay.runOnFirstFix(new Runnable() {
 			public void run() {
 				mMapController.animateTo(mMyLocationOverlay.getMyLocation());
-				mMapController.zoomToSpan(3000, 3000);
+				mMapController.zoomToSpan(SPAN_LAT, SPAN_LONG);
 			}
 		});
 	}
@@ -143,6 +160,23 @@ public class FieldActivity extends MapActivity {
 			clearPoly.setVisibility(View.GONE);
 			addPoly.setVisibility(View.VISIBLE);
 		}
+		
+	}
+	
+	public void importRocks(View view) {
+		ArrayList<Rock> rocks = Rock.getAllRocks(this);
+		
+		mPickedRocks.clear();
+		mNotPickedRocks.clear();
+		for(Rock rock : rocks) {
+			if(rock.isPicked()) {
+				mPickedRocks.addRock(rock);
+			} else {
+				mNotPickedRocks.addRock(rock);
+			}
+		}
+		
+		mMapView.postInvalidate();
 		
 	}
 }

@@ -8,7 +8,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.ItemizedOverlay;
@@ -36,6 +35,7 @@ public class PolygonOverlay extends ItemizedOverlay<OverlayItem> {
 		paint.setStrokeWidth(3);
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		paint.setStrokeJoin(Paint.Join.MITER);
+		paint.setAlpha(75);
 		
 		paintLine = new Paint(Paint.ANTI_ALIAS_FLAG);
 		paintLine.setColor(Color.GRAY);
