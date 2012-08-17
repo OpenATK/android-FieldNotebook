@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!-- Reject the new position of the rock -->
+    <item 
+        android:id="@+id/reject"
+        android:showAsAction="always|withText" 
+        android:menuCategory="container" 
+        android:icon="@drawable/reject"
+        android:title="@string/draw_accept_reject"
+        android:visible="true"
+        android:enabled="true" />
+    
+    <!-- Accept the new position of the rock -->
+    <item 
+        android:id="@+id/accept" 
+        android:showAsAction="always|withText" 
+        android:menuCategory="container" 
+        android:icon="@drawable/accept"
+        android:title="@string/draw_accept_accept"
+        android:visible="true"
+        android:enabled="true" />
+    
+</menu>	

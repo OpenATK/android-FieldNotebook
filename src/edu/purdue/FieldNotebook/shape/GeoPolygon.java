@@ -1,5 +1,6 @@
 package edu.purdue.FieldNotebook.shape;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -63,6 +64,16 @@ public class GeoPolygon implements Iterable<GeoPoint> {
 		GeoPoint p = null;
 		if(i >= 0 && i < points.length) {
 			p = points[i];
+		}
+		
+		return p;
+	}
+	
+	public ArrayList<GeoPoint> getPoints() {
+		ArrayList<GeoPoint> p =  new ArrayList<GeoPoint>();
+		
+		for(int i = 0; i < points.length; i++) {
+			p.add(points[i]);
 		}
 		
 		return p;

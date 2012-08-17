@@ -6,9 +6,11 @@
      android:padding="10dp"
      android:orientation="vertical"
      android:clickable="true"
-     android:background="@drawable/note">
+     android:background="@drawable/note_not_selected">
      
      <edu.purdue.FieldNotebook.view.NotePaperEditText
+         style="@android:style/Holo.Light.ButtonBar"
+         android:id="@+id/note_area"
          android:layout_width="fill_parent"
          android:layout_height="wrap_content"
          android:gravity="top"

@@ -14,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import edu.purdue.FieldNotebook.shape.ScreenPolygon;
+import edu.purdue.libwaterapps.note.Object;
 
 public class PolygonSurfaceView extends SurfaceView implements Runnable {
 	private boolean running = false;
@@ -24,6 +25,7 @@ public class PolygonSurfaceView extends SurfaceView implements Runnable {
 	private Object pointLock = new Object();
 	private ScreenPolygon polygon = new ScreenPolygon();
 	private Point possNextPoint = null;
+	private int type;
 	
 	public PolygonSurfaceView(Context context) {
 		super(context);
@@ -56,6 +58,7 @@ public class PolygonSurfaceView extends SurfaceView implements Runnable {
 		paintFixed.setStrokeWidth(3);
 		paintFixed.setStrokeCap(Paint.Cap.ROUND);
 		paintFixed.setStrokeJoin(Paint.Join.MITER);
+		paintFixed.setAlpha(75);
 		
 		// Setup a paint to use for the possible next line
 		paintTemp = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -72,7 +75,12 @@ public class PolygonSurfaceView extends SurfaceView implements Runnable {
 	}
 	
 	// Start the thread that updates the drawing
-	public void startDrawing() {
+	public void startDrawing(int color, int type) {
+		paintFixed.setColor(color);
+		paintFixed.setAlpha(175);
+		paintTemp.setColor(color);
+		
+		this.type = type;
 		
 		// Clear any old points
 		polygon.clear();
@@ -127,12 +135,22 @@ public class PolygonSurfaceView extends SurfaceView implements Runnable {
 				path.moveTo(polygon.get(0).x, polygon.get(0).y);
 				for(Point p : polygon) {
 					path.lineTo(p.x, p.y);
-					canvas.drawPoint(p.x, p.y, paintFixed);
+					paintFixed.setStyle(Paint.Style.FILL_AND_STROKE);
+					canvas.drawCircle(p.x, p.y, 6, paintFixed);
+					paintFixed.setStyle(Paint.Style.STROKE);
 				}
 				
-				canvas.drawPath(path, paintFixed);
+				if(type == Object.TYPE_LINE || type == Object.TYPE_POLYGON) {
+					canvas.drawPath(path, paintFixed);
+				}
 				
-				if(possNextPoint != null) {
+				if(type == Object.TYPE_POLYGON && polygon.size() >= 3) {
+					paintFixed.setStyle(Paint.Style.FILL);
+					canvas.drawPath(path, paintFixed);
+					paintFixed.setStyle(Paint.Style.STROKE);
+				}
+				
+				if(possNextPoint != null && (type == Object.TYPE_POLYGON || type == Object.TYPE_LINE)) {
 					path = new Path();
 					
 					path.moveTo(polygon.getLast().x, polygon.getLast().y);

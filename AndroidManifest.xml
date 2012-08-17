@@ -3,21 +3,42 @@
     android:versionCode="1"
     android:versionName="1.0">
 
-    <uses-sdk android:minSdkVersion="10" />
+    <uses-sdk android:minSdkVersion="11" />
+    
+    <!-- Setup a FIELD permission with arbitrates access to the field content provider -->
+    <permission 
+        android:name="edu.purdue.libwaterapps.permission.NOTES"
+        android:label="@string/field_perm_label"
+        android:description="@string/field_perm_desc"
+        android:protectionLevel="normal" />
+    <permission 
+        android:name="edu.purdue.libwaterapps.permission.OBJECTS"
+        android:label="@string/field_perm_label"
+        android:description="@string/field_perm_desc"
+        android:protectionLevel="normal" />
     
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="edu.purdue.libwaterapps.permission.NOTES" />
     <uses-permission android:name="edu.purdue.libwaterapps.permission.ROCKS" />
+    <uses-permission android:name="edu.purdue.libwaterapps.permission.OBJECTS" />
 
     <application android:label="@string/app_name"
-        android:icon="@drawable/ic_launcher"
-        android:theme="@style/FieldNotebookTheme">
+        android:icon="@drawable/ic_launcher">
         
         <uses-library android:name="com.google.android.maps" /> 
+        
+       	<provider android:authorities="edu.purdue.libwaterapps.notesProvider"
+       	    android:name="edu.purdue.libwaterapps.provider.NotesProvider" android:exported="true" 
+       	    android:permission="edu.purdue.libwaterapps.permission.NOTES" android:enabled="true" />
+       	<provider android:authorities="edu.purdue.libwaterapps.objectsProvider"
+       	    android:name="edu.purdue.libwaterapps.provider.ObjectsProvider" android:exported="true" 
+       	    android:permission="edu.purdue.libwaterapps.permission.OBJECTS" android:enabled="true" />
        	
         <activity android:name="FieldActivity"
                   android:label="@string/app_name"
+                  android:windowSoftInputMode="adjustResize|stateHidden"
                   android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

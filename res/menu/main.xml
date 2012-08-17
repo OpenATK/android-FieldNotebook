@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- Add a point to a map -->
+    <item
+        android:id="@+id/add_point"
+        android:showAsAction="always|withText"
+        android:title="@string/menu.add_point" />
+    
+    <!-- Add a line to a map -->
+    <item
+        android:id="@+id/add_line"
+        android:showAsAction="always|withText"
+        android:title="@string/menu.add_line" />
+    
+    <!-- Add a point to a map -->
+    <item
+        android:id="@+id/add_polygon"
+        android:showAsAction="always|withText"
+        android:title="@string/menu.add_polygon" />
+    
+    <!-- Add a new note -->
+    <item 
+        android:id="@+id/new_note"
+        android:showAsAction="always|withText" 
+	    android:icon="@drawable/new_note"
+        android:title="@string/menu.new_note"  />
+    
+    <!-- import rocks for display -->
+    <item 
+        android:id="@+id/import_rocks"
+        android:showAsAction="never"
+	    android:icon="@drawable/rock_both"
+        android:title="@string/menu.import_rocks"  />
+    
+</menu>

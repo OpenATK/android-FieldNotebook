@@ -1,11 +1,22 @@
 <resources>
 	<string name="google_api_key">02YP-AXMV63rQUc5m2Q-hrx9cApiK3b6gxKftjg</string>
     <string name="app_name">Field Notebook</string>
-    <string name="add_note">Add A Note</string>
-    <string name="file">File</string>
-    <string name="edit">Edit</string>
+    
+    <string name="menu.new_note">New Note</string>
+    <string name="menu.import_rocks">Import Rocks</string>
+    <string name="menu.hide_rocks">Hide Rocks</string>
+    <string name="menu.add_point">Add Point</string>
+    <string name="menu.add_line">Add Line</string>
+    <string name="menu.add_polygon">Add Polygon</string>
+    
+    <string name="field_perm_desc">Let apps access your database of field objects and notes</string>
+    <string name="field_perm_label">Field Access</string>
+    
     <string name="add_polygon">Add Polygon</string>
     <string name="finish_polygon">Finish Polygon</string>
     <string name="clear_polygon">Clear Polygon</string>
-    <string name="import_rocks">Import Rocks</string>
+    
+    <string name="draw_accept_accept">Accept Annotations</string>
+    <string name="draw_accept_reject">Reject Annotations</string>
+    
 </resources>

@@ -72,6 +72,10 @@ public class ScreenPolygon implements Iterable<Point> {
 	public boolean isEmpty() {
 		return x.length == 0; 
 	}
+	
+	public int size() {
+		return x.length;
+	}
 
 	public Iterator<Point> iterator() {
 		return new ScreenPolygonIterator();
